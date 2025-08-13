@@ -241,6 +241,25 @@ thirdChallengeCheckBtn.addEventListener('click', () => {
                   <h1>🎉 ¡Felicidades, Valiente Aventurero! 🎉</h1>
                   <p>Tu recompensa es nada menos que <strong>una magnífica espada de fin de semana</strong> para disfrutar del majestuoso parque temático <strong>Puy du Fou</strong> y su inolvidable espectáculo <em>"El Sueño de Toledo"</em> 🌟⚔️</p>
                   <img src="img/puy.webp" alt="Entradas">
+                  <!-- Botón para abrir el video en otra ventana -->
+        <button id="abrirVideo" style="
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #b22222;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        ">🎬 Ver vídeo del espectáculo</button>
+    </div>
+
+    <script>
+        // Seleccionamos el botón y abrimos el video en una nueva ventana
+        document.getElementById('abrirVideo').addEventListener('click', () => {
+            window.open('https://www.youtube.com/watch?v=_3lwmAKw3VY', 'Video', 'width=800,height=450,top=100,left=100');
+        });
+    </script>
               </div>
           </body>
           </html>
