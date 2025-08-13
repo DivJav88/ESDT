@@ -151,7 +151,7 @@ codexCheckBtn.addEventListener('click', () => {
     const userAnswer = normalize(codexInput.value);
     
     if (userAnswer === normalize(correctAnswer)) {
-      codexFeedback.textContent = "¡Correcto! Has desbloqueado la pista del sombrero.";
+      codexFeedback.textContent = "¡Correcto! Has desbloqueado la pista: MORFEO.";
       codexFeedback.style.color = 'green';
 
     // Mostrar el tercer desafío
@@ -187,14 +187,68 @@ function normalizeText(str) {
 }
 // Comprobar respuesta
 thirdChallengeCheckBtn.addEventListener('click', () => {
-    const answer = normalizeText(thirdChallengeInput.value);
-    const correctAnswer = normalizeText("El sueño de Toledo"); // normalizamos también
+  const answer = normalizeText(thirdChallengeInput.value);
+  const correctAnswer = normalizeText("El sueño de Toledo"); // normalizamos también
 
-    if (answer === correctAnswer) {
-        thirdChallengeFeedback.textContent = "¡Correcto! Has completado todos los desafíos.";
-        thirdChallengeFeedback.style.color = 'green';
-    } else {
-        thirdChallengeFeedback.textContent = "No es correcto. Intenta nuevamente.";
-        thirdChallengeFeedback.style.color = 'red';
-    }
+  if (answer === correctAnswer) {
+      thirdChallengeFeedback.textContent = "¡Correcto! Has completado todos los desafíos.";
+      thirdChallengeFeedback.style.color = 'green';
+
+      // Abrir ventana emergente con la recompensa
+      const popup = window.open('', 'Recompensa', 'width=500,height=500,top=200,left=200');
+      popup.document.write(`
+          <html>
+          <head>
+              <title>¡Recompensa Épica!</title>
+              <style>
+                  body { 
+                      display: flex; 
+                      justify-content: center; 
+                      align-items: center; 
+                      height: 100%; 
+                      margin: 0; 
+                      background: linear-gradient(to bottom, #fceabb, #f8b500);
+                      font-family: 'Georgia', serif; 
+                      text-align: center;
+                      animation: fadeIn 1s ease-in-out;
+                  }
+                  @keyframes fadeIn {
+                      from { opacity: 0; transform: scale(0.8); }
+                      to { opacity: 1; transform: scale(1); }
+                  }
+                  img { 
+                      max-width: 80%; 
+                      height: auto; 
+                      border-radius: 15px; 
+                      box-shadow: 0 0 25px rgba(0,0,0,0.5);
+                      margin-top: 20px;
+                  }
+                  h1 { 
+                      color: #b22222; 
+                      font-size: 2.2em; 
+                      text-shadow: 2px 2px 8px #fff; 
+                  }
+                  p { 
+                      font-size: 1.3em; 
+                      font-weight: bold;
+                      color: #4b0082; 
+                      margin: 15px 0 0 0;
+                  }
+              </style>
+          </head>
+          <body>
+              <div>
+                  <h1>🎉 ¡Felicidades, Valiente Aventurero! 🎉</h1>
+                  <p>Tu recompensa es nada menos que <strong>una magnífica espada de fin de semana</strong> para disfrutar del majestuoso parque temático <strong>Puy du Fou</strong> y su inolvidable espectáculo <em>"El Sueño de Toledo"</em> 🌟⚔️</p>
+                  <img src="img/puy.webp" alt="Entradas">
+              </div>
+          </body>
+          </html>
+      `);
+  } else {
+      thirdChallengeFeedback.textContent = "No es correcto. Intenta nuevamente.";
+      thirdChallengeFeedback.style.color = 'red';
+  }
 });
+
+
