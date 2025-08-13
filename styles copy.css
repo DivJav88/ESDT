@@ -1,0 +1,124 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f4f0e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.screen {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+h1, h2 {
+  color: #8b0000;
+}
+
+#puzzle-container {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 3px solid #8b0000;
+  margin: 20px auto;
+}
+
+.puzzle-piece {
+  width: 100px;
+  height: 100px;
+  background-image: url('img/puzzle.jpg'); /* tu imagen del puzzle */
+  background-size: 300px 300px;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  cursor: grab;
+}
+
+.victoria {
+  animation: brillar 1s ease-in-out 3;
+}
+
+@keyframes brillar {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0px gold); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 20px gold); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0px gold); }
+}
+
+button {
+  background-color: #8b0000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #a52a2a;
+}
+
+#puzzle-message {
+  font-size: 1.2rem;
+  color: #006400;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+
+/* Codex Section */
+
+#codex-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#codex-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+#codex-feedback {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* Tercer Reto */
+#third-challenge-section {
+  margin-top: 2rem;
+  text-align: center;
+  border: 2px solid #8b0000;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff5f5;
+  width: 350px;
+}
+
+#third-challenge-section h2 {
+  margin-bottom: 10px;
+}
+
+#third-challenge-message {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+#third-challenge-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 80%;
+  margin-bottom: 10px;
+  border: 1px solid #8b0000;
+  border-radius: 5px;
+}
+
+#third-challenge-feedback {
+  font-weight: bold;
+  margin-top: 10px;
+}

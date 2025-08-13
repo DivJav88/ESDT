@@ -1,0 +1,217 @@
+/* Marco decorativo alrededor de toda la página */
+body {
+  font-family: 'UnifrakturCook', 'MedievalSharp', cursive;
+  background-color: #f4f0e6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  color: #3b1f0a;
+  text-align: center;
+  min-height: 100vh;
+  position: relative;
+
+  /* Base del pergamino */
+  border: 40px solid #d6b370;
+  box-shadow:
+    0 0 60px rgba(0,0,0,0.5),
+    inset 0 0 40px rgba(0,0,0,0.3);
+
+  /* Textura interna */
+  background-image:
+    radial-gradient(circle at top left, rgba(255,255,255,0.3), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.2), transparent 60%),
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 20px);
+  background-size: cover;
+  
+  /* Recorte irregular del borde */
+  clip-path: polygon(
+    5% 0%, 10% 2%, 15% 0%, 20% 3%, 25% 0%,
+    30% 2%, 35% 0%, 40% 4%, 45% 0%, 50% 2%,
+    55% 0%, 60% 3%, 65% 0%, 70% 2%, 75% 0%,
+    80% 3%, 85% 0%, 90% 2%, 95% 0%,
+    100% 5%, 98% 10%, 100% 15%, 97% 20%, 100% 25%,
+    98% 30%, 100% 35%, 97% 40%, 100% 45%, 98% 50%,
+    100% 55%, 97% 60%, 100% 65%, 98% 70%, 100% 75%,
+    97% 80%, 100% 85%, 98% 90%, 100% 95%,
+    95% 100%, 90% 98%, 85% 100%, 80% 97%, 75% 100%,
+    70% 98%, 65% 100%, 60% 97%, 55% 100%, 50% 98%,
+    45% 100%, 40% 97%, 35% 100%, 30% 98%, 25% 100%,
+    20% 97%, 15% 100%, 10% 98%, 5% 100%,
+    0% 95%, 2% 90%, 0% 85%, 3% 80%, 0% 75%,
+    2% 70%, 0% 65%, 3% 60%, 0% 55%, 2% 50%,
+    0% 45%, 3% 40%, 0% 35%, 2% 30%, 0% 25%,
+    3% 20%, 0% 15%, 2% 10%, 0% 5%
+  );
+}
+
+/* Capa para efecto quemado + animación */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 100px rgba(0,0,0,0.5),
+    inset 0 0 200px rgba(0,0,0,0.3);
+  mix-blend-mode: multiply;
+  animation: parpadeoFuego 3s infinite ease-in-out;
+}
+
+@keyframes parpadeoFuego {
+  0%, 100% {
+    box-shadow:
+      inset 0 0 100px rgba(0,0,0,0.5),
+      inset 0 0 200px rgba(0,0,0,0.3);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 120px rgba(0,0,0,0.6),
+      inset 0 0 220px rgba(0,0,0,0.4);
+  }
+}
+
+
+/* resto del CSS que ya te pasé antes aquí sin cambios */
+
+
+.screen {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+h1, h2 {
+  color: #8b0000;
+  text-shadow: 2px 2px 4px #00000044;
+  border-bottom: 2px solid #8b0000;
+  padding-bottom: 5px;
+  font-family: 'UnifrakturCook', cursive;
+}
+
+#puzzle-container {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 3px solid #8b0000;
+  margin: 20px auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  background-color: #fdf8f0;
+}
+
+.puzzle-piece {
+  width: 100px;
+  height: 100px;
+  background-image: url('img/puzzle.jpg'); /* tu imagen del puzzle */
+  background-size: 300px 300px;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  cursor: grab;
+}
+
+.victoria {
+  animation: brillar 1s ease-in-out 3;
+}
+
+@keyframes brillar {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0px gold); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 20px gold); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0px gold); }
+}
+
+button {
+  background-color: #8b0000;
+  color: #fff8dc;
+  border: 2px solid #5b0000;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 8px;
+  font-family: 'MedievalSharp', cursive;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+button:hover {
+  background-color: #a52a2a;
+  box-shadow: 0 0 15px gold;
+}
+
+#puzzle-message {
+  font-size: 1.3rem;
+  color: #006400;
+  font-weight: bold;
+  margin-top: 15px;
+  font-family: 'MedievalSharp', cursive;
+}
+
+
+/* Codex Section */
+
+#codex-section {
+  margin-top: 2rem;
+  text-align: center;
+  background: rgba(255, 248, 220, 0.8);
+  border: 2px solid #8b0000;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+#codex-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  border: 1px solid #8b0000;
+  border-radius: 5px;
+  background-color: #fffaf0;
+}
+
+#codex-feedback {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* Tercer Reto */
+#third-challenge-section {
+  margin-top: 2rem;
+  text-align: center;
+  border: 3px solid #8b0000;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff5f5;
+  width: 350px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+#third-challenge-section h2 {
+  margin-bottom: 10px;
+}
+
+#third-challenge-message {
+  font-size: 1rem;
+  color: #3b1f0a;
+  margin-bottom: 15px;
+}
+
+#third-challenge-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 80%;
+  margin-bottom: 10px;
+  border: 1px solid #8b0000;
+  border-radius: 5px;
+  background-color: #fffaf0;
+}
+
+#third-challenge-feedback {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Importar fuentes medievales */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=UnifrakturCook:wght@700&display=swap');

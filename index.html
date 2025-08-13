@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misión del Viajero del Tiempo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="welcome-screen" class="screen">
+    <h1>Bienvenido, viajero del tiempo</h1>
+    <p>Tu misión te llevará a través de eras olvidadas. Resuelve los retos para desbloquear tu destino.</p>
+    <button id="start-btn">Comenzar misión</button>
+  </div>
+
+  <div id="puzzle-screen" class="screen hidden">
+    <h2>Primer reto: el rompecabezas</h2>
+    <p>Arma la imagen para descubrir tu primera pista.</p>
+    <div id="puzzle-container">
+      <!-- Rompecabezas se generará con JS -->
+    </div>
+    <button id="check-puzzle-btn">He completado el rompecabezas</button>
+    <p id="puzzle-message"></p>
+  </div>
+
+  <audio id="sonidoVictoria" src="sonidos/victoria.mp3"></audio>
+  <audio id="sonidoMover" src="sonidos/mover.mp3"></audio>
+
+
+<!-- SEGUNDO RETO -->
+<div id="codex-section" class="hidden">
+    <h2>¡Siguiente desafío!</h2>
+    <p>Descifra el mensaje secreto usando tu ingenio y conocimientos históricos:</p>
+    <div id="codex-message">YN UVFGEBEVN PBOEN IVQN</div>
+
+
+  
+    <input type="text" id="codex-input" placeholder="Introduce tu respuesta">
+    <button id="codex-check-btn">Verificar</button>
+    
+    <p id="codex-feedback"></p>
+</div>
+
+<!--TERCER RETO-->
+<div id="third-challenge-section" class="hidden">
+    <h2>Tercer Desafío</h2>
+    <p id="third-challenge-message">"Cuando el sol se va y llega la oscuridad,
+        luces y fuego dan vida a la ciudad.
+        Con barcos y héroes, la historia revivo,
+        ¿qué espectáculo hace que todo cobre sentido?"</p>
+    <input type="text" id="third-challenge-input" placeholder="Tu respuesta">
+    <button id="third-challenge-check-btn">Comprobar</button>
+    <p id="third-challenge-feedback"></p>
+  </div>
+  
+  
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+  
