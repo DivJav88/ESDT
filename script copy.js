@@ -42,69 +42,55 @@ function generatePuzzle() {
     const y = Math.floor(pos / 3) * -100;
     piece.style.backgroundPosition = `${x}px ${y}px`;
 
+    piece.setAttribute("draggable", "true");
     piece.dataset.index = pos; // número real de la pieza
     puzzleContainer.appendChild(piece);
-
-    // Escritorio - drag & drop
-    piece.setAttribute("draggable", "true");
-    piece.addEventListener("dragstart", () => {
-      sonidoMover.currentTime = 0;
-      sonidoMover.play();
-      dragged = piece;
-    });
-
-    // Móvil - touch events
-    piece.addEventListener("touchstart", (e) => {
-      dragged = piece;
-      sonidoMover.currentTime = 0;
-      sonidoMover.play();
-      e.target.classList.add("dragging");
-    });
-    piece.addEventListener("touchend", (e) => {
-      e.target.classList.remove("dragging");
-      const touch = e.changedTouches[0];
-      const target = document.elementFromPoint(touch.clientX, touch.clientY);
-      if (target && target.classList.contains("puzzle-piece") && target !== dragged) {
-        swapPieces(dragged, target);
-      }
-      dragged = null;
-    });
   });
 
-  // Drag & drop container
+  let dragged = null;
+
+  puzzleContainer.addEventListener("dragstart", (e) => {
+    dragged = e.target;
+    sonidoMover.currentTime = 0;
+    sonidoMover.play();
+  });
+
   puzzleContainer.addEventListener("dragover", (e) => e.preventDefault());
+
   puzzleContainer.addEventListener("drop", (e) => {
     e.preventDefault();
     const target = e.target;
-    if (!target.classList.contains("puzzle-piece") || target === dragged) return;
-    swapPieces(dragged, target);
-  });
-}
+    if (!target.classList.contains("puzzle-piece") || target === dragged)
+      return;
 
-// Función para intercambiar piezas
-function swapPieces(a, b) {
-  const aNext = a.nextSibling;
-  const bNext = b.nextSibling;
-  puzzleContainer.insertBefore(a, bNext);
-  puzzleContainer.insertBefore(b, aNext);
+    // Intercambiar piezas
+    const draggedNext = dragged.nextSibling;
+    const targetNext = target.nextSibling;
+
+    puzzleContainer.insertBefore(dragged, targetNext);
+    puzzleContainer.insertBefore(target, draggedNext);
+  });
 }
 
 // Verificar puzzle
 checkPuzzleBtn.addEventListener("click", () => {
   const pieces = Array.from(puzzleContainer.children);
-  const correct = pieces.every((piece, i) => parseInt(piece.dataset.index) === i);
+  const correct = pieces.every(
+    (piece, i) => parseInt(piece.dataset.index) === i
+  );
 
   if (correct) {
     puzzleMessage.textContent = "¡Correcto! Tu primera pista es: 'USA ROT13'.";
     sonidoVictoria.play();
     pieces.forEach((p) => p.classList.add("victoria"));
+
+    // Mostrar el segundo reto
     showCodex(); // <-- aquí
   } else {
     puzzleMessage.textContent =
       "Todavía no está correcto. Intenta reorganizar las piezas.";
   }
 });
-
 
 //SEGUNDO RETO
 const codexSection = document.getElementById("codex-section");
