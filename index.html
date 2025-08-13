@@ -1,76 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Misión del Viajero del Tiempo</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="welcome-screen" class="screen">
-    <h1>Bienvenido, viajero del tiempo</h1>
-    <p><br>"Tu misión te llevará a través de eras olvidadas,
-        donde los ecos de antiguas gestas aún resuenan en la bruma del tiempo.
-        Para alcanzar tu destino, deberás superar pruebas forjadas por la astucia de sabios,
-        el valor de guerreros y la paciencia de reyes.
-        <br><br>
-        Cada reto superado abrirá las puertas a la siguiente senda,
-        revelando fragmentos de un secreto que ha aguardado siglos para ti.
-        Solo quien venza las sombras del pasado y atraviese los campos de gloria
-        podrá reclamar la recompensa final"</p>
-    <button id="start-btn">Comenzar la aventura</button>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JAPY BERDEY TU YU</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <style>
+      .btn-sorpresa {
+        display: block;
+        margin: 20px auto 0;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        font-size: 1rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        animation: aparecer 1.5s ease forwards, latido 1.2s infinite 1.5s;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+      .btn-sorpresa:hover {
+        background-color: #388e3c;
+        transform: scale(1.1);
+      }
 
-  <div id="puzzle-screen" class="screen hidden">
-    <h2>Primer reto: el rompecabezas</h2>
-    <p>“Los fragmentos de una crónica perdida yacen ante ti.
-        Ensámblalos con paciencia y mirada certera:
-        la imagen completa revelará la primera pista del camino.”</p>
-    <div id="puzzle-container">
-      <!-- Rompecabezas se generará con JS -->
+      /* Animación de latido */
+      @keyframes latido {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.05);
+        }
+        50% {
+          transform: scale(0.95);
+        }
+        75% {
+          transform: scale(1.05);
+        }
+      }
+
+      /* Animación de aparición */
+      @keyframes aparecer {
+        0% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="imgBox">
+        <div class="bark"></div>
+        <img src="https://image.ibb.co/fYzTrb/lastofus.jpg" />
+      </div>
+      <div class="details">
+        <h4 class="color1">You're not a Fossil! (YET)</h4>
+        <h4 class="color2 margin">(HAPPY BIRTHDAY)</h4>
+
+        <p>Querido amorcito,</p>
+        <p>A ver...</p>
+        <p>Me robas la manta por la noche,</p>
+        <p>te comes el último bocado de postre,</p>
+        <p>a veces me sacas de quicio con tus</p>
+        <p>bromas,</p>
+        <p>y aun así, de alguna manera,</p>
+        <p>consigues hacerme una persona</p>
+        <p>muuuy feliz.</p>
+        <p>¿Cómo lo haces? :)</p>
+        <p class="text-right">¡Feliz cumpleaños, mi vida!</p>
+        <p class="text-right">♥JAVI</p>
+
+        <!-- Botón de sorpresa -->
+        <button
+          class="btn-sorpresa"
+          onclick="window.location.href='index1.html'"
+        >
+          ¡Sorpresaaa!
+        </button>
+      </div>
     </div>
-    <button id="check-puzzle-btn">He completado el rompecabezas</button>
-    <p id="puzzle-message"></p>
-  </div>
-
-  <audio id="sonidoVictoria" src="sonidos/victoria.mp3"></audio>
-  <audio id="sonidoMover" src="sonidos/mover.mp3"></audio>
-
-
-<!-- SEGUNDO RETO -->
-<div id="codex-section" class="hidden">
-    <h2>Segundo reto: El Mensaje Secreto</h2>
-    <p>“Las crónicas antiguas guardan un susurro cifrado.
-        Quien domine las artes del ingenio
-        y recuerde los hechos que forjaron reyes y batallas,
-        hallará la palabra que abre la siguiente puerta.”</p>
-    <div id="codex-message">YN UVFGEBEVN PBOEN IVQN</div>
-
-
-  
-    <input type="text" id="codex-input" placeholder="Introduce tu respuesta">
-    <button id="codex-check-btn">Verificar</button>
-    
-    <p id="codex-feedback"></p>
-</div>
-
-<!--TERCER RETO-->
-<div id="third-challenge-section" class="hidden">
-    <h2>Tercer reto: La palabra velada.
-        Esta adivinanza encierra la llave de tu destino.</h2>
-    <p id="third-challenge-message">"Cuando el sol se va y llega la oscuridad,
-        luces y fuego dan vida a la ciudad.
-        Con barcos y héroes, la historia revivo,
-        ¿qué espectáculo hace que todo cobre sentido?"</p>
-    <input type="text" id="third-challenge-input" placeholder="Tu respuesta">
-    <button id="third-challenge-check-btn">Comprobar</button>
-    <p id="third-challenge-feedback"></p>
-  </div>
-  
-  
-  <script src="script.js"></script>
-</body>
+  </body>
 </html>
-
-
-  
