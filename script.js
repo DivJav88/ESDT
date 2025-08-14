@@ -258,7 +258,7 @@ thirdChallengeCheckBtn.addEventListener("click", () => {
               <div>
                   <h1>🎉 ¡Felicidades, Valiente Aventurero! 🎉</h1>
                   <p>Tu recompensa es nada menos que <strong>una magnífica espada de fin de semana</strong> para disfrutar del majestuoso parque temático <strong>Puy du Fou</strong> y su inolvidable espectáculo <em>"El Sueño de Toledo"</em> 🌟⚔️</p>
-                  <img src="img/puy2.jpg" alt="Entradas">
+                  <img src="img/puyju.jpg" alt="Entradas">
                   <br>
                   <!-- Botón para abrir el video en otra ventana -->
         <button id="abrirVideo" style="
