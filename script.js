@@ -64,7 +64,11 @@ function generatePuzzle() {
       e.target.classList.remove("dragging");
       const touch = e.changedTouches[0];
       const target = document.elementFromPoint(touch.clientX, touch.clientY);
-      if (target && target.classList.contains("puzzle-piece") && target !== dragged) {
+      if (
+        target &&
+        target.classList.contains("puzzle-piece") &&
+        target !== dragged
+      ) {
         swapPieces(dragged, target);
       }
       dragged = null;
@@ -76,7 +80,8 @@ function generatePuzzle() {
   puzzleContainer.addEventListener("drop", (e) => {
     e.preventDefault();
     const target = e.target;
-    if (!target.classList.contains("puzzle-piece") || target === dragged) return;
+    if (!target.classList.contains("puzzle-piece") || target === dragged)
+      return;
     swapPieces(dragged, target);
   });
 }
@@ -92,7 +97,9 @@ function swapPieces(a, b) {
 // Verificar puzzle
 checkPuzzleBtn.addEventListener("click", () => {
   const pieces = Array.from(puzzleContainer.children);
-  const correct = pieces.every((piece, i) => parseInt(piece.dataset.index) === i);
+  const correct = pieces.every(
+    (piece, i) => parseInt(piece.dataset.index) === i
+  );
 
   if (correct) {
     puzzleMessage.textContent = "¡Correcto! Tu primera pista es: 'USA ROT13'.";
@@ -104,7 +111,6 @@ checkPuzzleBtn.addEventListener("click", () => {
       "Todavía no está correcto. Intenta reorganizar las piezas.";
   }
 });
-
 
 //SEGUNDO RETO
 const codexSection = document.getElementById("codex-section");
@@ -220,26 +226,29 @@ thirdChallengeCheckBtn.addEventListener("click", () => {
               <title>¡Recompensa Épica!</title>
               <style>
                   body { 
-                      display: flex; 
-                      justify-content: center; 
-                      align-items: center; 
-                      height: 100%; 
-                      margin: 0; 
-                      background: linear-gradient(to bottom, #fceabb, #f8b500);
-                      font-family: 'Georgia', serif; 
-                      text-align: center;
-                      animation: fadeIn 1s ease-in-out;
-                  }
+    display: flex; 
+    flex-direction: column; /* ahora los elementos van de arriba a abajo */
+    justify-content: center; /* centrado vertical */
+    align-items: center; /* centrado horizontal */
+    min-height: 100vh; /* ocupa toda la altura visible */
+    margin: 0; 
+    background: linear-gradient(to bottom, #fceabb, #f8b500);
+    font-family: 'Georgia', serif; 
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
                   @keyframes fadeIn {
                       from { opacity: 0; transform: scale(0.8); }
                       to { opacity: 1; transform: scale(1); }
                   }
-                  img { 
-                      max-width: 80%; 
-                      height: auto; 
-                      border-radius: 15px; 
+                  img {
+                      display: block; /* fuerza a ocupar toda la línea */
+                      max-width: 80%;
+                      height: auto;
+                      border-radius: 15px;
                       box-shadow: 0 0 25px rgba(0,0,0,0.5);
-                      margin-top: 20px;
+                      margin: 20px auto 0; /* centrado horizontal */
                   }
                   h1 { 
                       color: #b22222; 
